@@ -25,7 +25,7 @@ if Menu {
 	draw_text(cam.x + 45, cam.y + 120, "STAT");
 	draw_text(cam.x + 45, cam.y + 133, "CELL");
 	
-	if keyboard_check_pressed(ord("X")) {
+	if global.controls[3] {
 		if OWMenu == 0 {
 			Menu = false;
 			obj_Overworld_Frisk.Frozen = false;
@@ -48,7 +48,7 @@ if Menu {
 				OWMenu_Sel = 0;
 			}
 		}
-		if keyboard_check_pressed(ord("Z")) {
+		if global.controls[2] {
 			audio_play_sound(Select, 1, false);
 			OWMenu = (OWMenu_Sel + 1);
 			OWMenu_Sel2 = 0;
@@ -67,7 +67,7 @@ if Menu {
 			draw_text(cam.x + 124, cam.y + 48 + (13 * i), global.Item[i]);
 		}
 		var dir = 0;
-		if keyboard_check_pressed(vk_up) {
+		if global.controls[1] == 1 {
 			audio_play_sound(MenuMove, 1, false);
 			OWMenu_Sel2 -= 1;
 			dir = 1;
@@ -75,7 +75,7 @@ if Menu {
 				OWMenu_Sel2 = array_length(global.Item) - 1;
 			}
 		}
-		if keyboard_check_pressed(vk_down) {
+		if global.controls[4] == -1 {
 			audio_play_sound(MenuMove, 1, false);
 			OWMenu_Sel2 += 1;
 			dir = -1;
@@ -102,7 +102,7 @@ if Menu {
 		else {
 			OWMenu = 0;
 		}
-		if keyboard_check_pressed(ord("Z")) {
+		if global.controls[2] {
 			audio_play_sound(Select, 1, false);
 			global.Monster[0] = obj_Interaction;
 			instance_create_depth(0, 0, -999999, obj_Overworld_Dialogue);
@@ -177,7 +177,7 @@ if Menu {
 				break;
 			}
 		}
-		if keyboard_check_pressed(ord("Z")) {
+		if global.controls[2] {
 			audio_play_sound(Select, 1, false);
 			global.Monster[0] = obj_Interaction;
 			instance_create_depth(0, 0, -999999, obj_Overworld_Dialogue);

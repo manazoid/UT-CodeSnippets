@@ -26,5 +26,5 @@ function SAVE() {
 	
 	global.PlayerHP = global.PlayerMaxHP;
 
-	ds_map_secure_save(global.DATA, "sdt");
+	ds_map_secure_save(global.DATA, "save_0.dat");
 }

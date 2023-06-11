@@ -1,4 +1,5 @@
-if (keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(vk_enter)) && !instance_exists(Dialogue) && !obj_Overworld_Camera.Menu && !instance_exists(obj_SavePointMenu) {
+if (global.controls[2] || keyboard_check_pressed(vk_enter))
+&& !instance_exists(Dialogue) && !obj_Overworld_Camera.Menu && !instance_exists(obj_SavePointMenu) {
 	instance_create_depth(0, 0, -999999, obj_Overworld_Dialogue);
 	Dialogue = instance_create_depth(obj_Overworld_Camera.x + 24, obj_Overworld_Camera.y + 173, -1000000, obj_TextElement);
 	Dialogue.TextToDraw = TextToDraw;

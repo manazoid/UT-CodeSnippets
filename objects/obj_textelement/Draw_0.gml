@@ -130,14 +130,14 @@ if IsWriting {
 			IsWriting = false;
 		}
 	}
-	if (keyboard_check(ord("X")) || keyboard_check(ord("C"))) {
+	if (global.controls[3] || global.controls[4]) {
 		TextLength = string_length(TextToDraw);
 		IsWriting = false;
 	}
 }
 else {
 	// Moves on to the next line of text, or destroy the writer
-	if ((keyboard_check_pressed(ord("Z")) || keyboard_check(ord("C"))) && CanAdvance) {
+	if ((global.controls[2] || global.controls[4]) && CanAdvance) {
 		TextLength = 0;
 		TextDelay = 2;
 		CurrentDelay = 0;

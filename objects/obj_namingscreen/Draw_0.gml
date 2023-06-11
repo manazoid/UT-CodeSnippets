@@ -1,3 +1,5 @@
+ControlGM()
+
 if (menu == 0) {
 	draw_set_font(font_defaulttitle);
 	ha = draw_get_halign();
@@ -12,15 +14,15 @@ if (menu == 0) {
 	draw_text(320, 310, "PRESS Z TO START\nPRESS X TO ERASE SAVE DATA");
 	draw_set_halign(ha);
 	draw_set_valign(va);
-	if keyboard_check_pressed(ord("Z")) {
+	if global.controls[2] {
 		menu = 1;
-		if file_exists("sdt") {
+		if file_exists("save_0.dat") {
 			LOAD();
 		}
 		exit;
 	}
-	if keyboard_check_pressed(ord("X")) {
-		file_delete("sdt");
+	if global.controls[3] {
+		file_delete("save_0.dat");
 	}
 }
 if (menu == 1) {
@@ -61,32 +63,32 @@ if (menu == 1) {
 	totalchar[58] = "";
 	totalchar[59] = "";
 	draw_sprite_ext(Soul, 0, 139 + ((sel % 10) * 40), 96 + (floor(sel / 10) * 50), 2, 2, 0, c_white, 0.5);
-	if keyboard_check_pressed(vk_up) {
+	if global.controls[1] == 1 {
 		sel -= 10;
 		audio_play_sound(MenuMove, 20, false);
 		if (sel < 0)
 			sel += 10;
 	}
-	if keyboard_check_pressed(vk_down) {
+	if global.controls[1] == -1 {
 		sel += 10;
 		audio_play_sound(MenuMove, 20, false);
 		if (sel > 58)
 			sel -= 10;
 	}
-	if keyboard_check_pressed(vk_left) {
+	if global.controls[0] == -1 {
 		sel -= 1;
 		audio_play_sound(MenuMove, 20, false);
 		if (sel < 0)
 			sel += 1;
 	}
-	if keyboard_check_pressed(vk_right) {
+	if global.controls[0] == 1 {
 		sel += 1;
 		audio_play_sound(MenuMove, 20, false);
 		if (sel > 58)
 			sel -= 1;
 	}
 	bkspflag = false;
-	if keyboard_check_pressed(ord("Z")) {
+	if global.controls[2] {
 		if (sel == 57) {
 			bkspflag = true;
 			audio_play_sound(Select, 20, false);
@@ -103,7 +105,7 @@ if (menu == 1) {
 			codename += totalchar[sel];
 		}
 	}
-	if (keyboard_check_pressed(ord("X")) || bkspflag) {
+	if (global.controls[3] || bkspflag) {
 		codename = string_copy(codename, 1, string_length(codename) - 1);
 	}
 	for (var j = 0; j < 26; j++) {
@@ -151,18 +153,18 @@ if (menu == 2) {
 	draw_set_halign(ha);
 	draw_set_valign(va);
 	
-	if keyboard_check_pressed(vk_left) {
+	if global.controls[0] == -1 {
 		sel -= 1;
 		if (sel < 0)
 			sel += 1;
 	}
-	if keyboard_check_pressed(vk_right) {
+	if global.controls[0] == 1 {
 		sel += 1;
 		if (sel > 1)
 			sel -= 1;
 	}
 	
-	if keyboard_check_pressed(ord("Z")) {
+	if global.controls[2] {
 		if (sel == 0) {
 			room_goto(Room_HubB)
 			sel = 0;
@@ -182,6 +184,6 @@ ha = draw_get_halign();
 draw_set_halign(fa_center);
 va = draw_get_valign();
 draw_set_valign(fa_bottom);
-draw_text(320, 476, "THIS GAME WAS MADE IN THE UNDERTALE ENGINE BY QSV\nYOUR CREDITS WOULD GO HERE");
+draw_text(320, 476, "THIS GAME WAS MADE IN THE UNDERTALE ENGINE\nYOUR CREDITS WOULD GO HERE");
 draw_set_halign(ha);
 draw_set_valign(va);

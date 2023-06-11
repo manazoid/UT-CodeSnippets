@@ -160,7 +160,7 @@ if Mode == SoulModes.Yellow {
 	sprite_index = Soul_Yellow;
 	image_angle = 180;
 	if instance_exists(obj_BulletGenerator) {
-		if keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(vk_enter) {
+		if global.controls[2] {
 			Shot = instance_create_depth(x, y, 0, obj_Soul_Shot);
 			Shot.vspeed = -10;
 			audio_play_sound(Shoot, 0, false);

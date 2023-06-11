@@ -9,11 +9,11 @@ if (global.UISelectionMenu > -1) {
 	
 	// Main menu
 	if (global.BattleMenu == 0) {
-		if keyboard_check_pressed(vk_left) {
+		if global.controls[5] == -1 {
 			global.UISelectionMenu -= 1;
 			audio_play_sound(MenuMove, 1, false);
 		}
-		if keyboard_check_pressed(vk_right) {
+		if global.controls[5] == 1 {
 			global.UISelectionMenu += 1;
 			audio_play_sound(MenuMove, 1, false);
 		}
@@ -60,19 +60,19 @@ if (global.UISelectionMenu > -1) {
 		draw_sprite(Soul, 0, 63 + (250 * (global.UISelectionMenu % 2)), 295 + (30 * floor(clamp(global.UISelectionMenu, 0, 5) / 2)));
 		
 	// Back out of a menu
-	if keyboard_check_pressed(ord("X")) || keyboard_check_pressed(vk_backspace) {
+	if global.controls[3] || keyboard_check_pressed(vk_backspace) {
 		global.BattleMenu = 0;
 		global.UISelectionMenu = BelowUIReferenceNum;
 	}
 	
 	// Navigation controls
 	if global.BattleMenu != 2.5 && global.BattleMenu != 3 {
-		if keyboard_check_pressed(vk_up) {
+		if global.controls[6] == 1 {
 			global.UISelectionMenu -= 1;
 			Dir -= 1;
 			audio_play_sound(MenuMove, 1, false);
 		}
-		if keyboard_check_pressed(vk_down) {
+		if global.controls[6] == -1 {
 			global.UISelectionMenu += 1;
 			Dir += 1;
 			audio_play_sound(MenuMove, 1, false);
@@ -86,22 +86,22 @@ if (global.UISelectionMenu > -1) {
 		if (global.UISelectionMenu < 0) {
 			global.UISelectionMenu = 0;
 		}
-		if keyboard_check_pressed(vk_up) {
+		if global.controls[6] == -1 {
 			global.UISelectionMenu -= 2;
 			Dir -= 2;
 			audio_play_sound(MenuMove, 1, false);
 		}
-		if keyboard_check_pressed(vk_down) {
+		if global.controls[6] == 1 {
 			global.UISelectionMenu += 2;
 			Dir += 2;
 			audio_play_sound(MenuMove, 1, false);
 		}
-		if keyboard_check_pressed(vk_left) {
+		if global.controls[5] == -1 {
 			global.UISelectionMenu -= 1;
 			Dir -= 1;
 			audio_play_sound(MenuMove, 1, false);
 		}
-		if keyboard_check_pressed(vk_right) {
+		if global.controls[5] == 1 {
 			global.UISelectionMenu += 1;
 			Dir += 1;
 			audio_play_sound(MenuMove, 1, false);
@@ -145,7 +145,7 @@ if (global.UISelectionMenu > -1) {
 		global.UISelectionMenu = clamp(global.UISelectionMenu, 0, global.CanFlee);
 	
 	// Confirm an input
-	if keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(vk_enter) {
+	if global.controls[2] {
 		// A better way of writing "if (so and so)" repeatedly, useful for infinite cases
 		audio_play_sound(Select, 1, false);
 		switch global.BattleMenu {

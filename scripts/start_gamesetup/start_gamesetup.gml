@@ -34,6 +34,4 @@ function START_GameSetup() {
 	
 	ConditionChange("armor", "Bandage");
 	ConditionChange("weapon", "Stick");
-	
-	
 }

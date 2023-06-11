@@ -49,5 +49,12 @@ global.PlayerWeapon = "Stick";
 
 global.CanFlee = true;
 
+// Controls
+global.controls[0] = 0;	// X axis
+global.controls[1] = 0;	// Y axis 
+global.controls[2] = 0;	// Confirm 
+global.controls[3] = 0; // Cancel
+global.controls[4] = 0;	// Menu
+
 START_GameSetup();
 room_goto(Room_Name);

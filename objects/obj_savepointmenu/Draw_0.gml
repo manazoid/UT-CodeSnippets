@@ -8,14 +8,14 @@ draw_set_font(font_battle_dialogue_overworld);
 draw_text(obj_Overworld_Camera.x + 99, obj_Overworld_Camera.y + 59, global.Name);
 draw_text(obj_Overworld_Camera.x + 203, obj_Overworld_Camera.y + 59, "LV " + string(global.PlayerLV));
 obj_Overworld_Frisk.Frozen = true;
-if keyboard_check_pressed(ord("Z")) {
+if global.controls[2] {
 	SaveState += 1;
 	if SaveState == 1 {
 		SAVE();
 		audio_play_sound(Save, 20, false);
 	}
 }
-if SaveState == 2 || keyboard_check_pressed(ord("X")) {
+if SaveState == 2 || global.controls[3] {
 	instance_destroy();
 	obj_Overworld_Frisk.Frozen = false;
 }

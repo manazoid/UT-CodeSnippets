@@ -1,11 +1,11 @@
 {
-  "option_windows_display_name": "UNDERTALE Engine by QSV",
+  "option_windows_display_name": "UNDERTALE Engine",
   "option_windows_executable_name": "undertale-qsvengine.exe",
   "option_windows_version": "1.0.0.0",
   "option_windows_company_info": "",
   "option_windows_product_info": "UNDERTALE Engine by QSV",
   "option_windows_copyright_info": "",
-  "option_windows_description_info": "An Undertale fangame engine built by QSV",
+  "option_windows_description_info": "An Undertale fangame engine built",
   "option_windows_display_cursor": true,
   "option_windows_icon": "icons/icon.ico",
   "option_windows_save_location": 0,

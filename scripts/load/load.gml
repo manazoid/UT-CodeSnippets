@@ -1,5 +1,5 @@
 function LOAD() {
-	global.DATA = ds_map_secure_load("sdt");
+	global.DATA = ds_map_secure_load("save_0.dat");
 	
 	global.PlayerLV = GetConditionValue("lv");
 	global.PlayerAttack = GetConditionValue("atk");

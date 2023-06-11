@@ -4,4 +4,3 @@ if (global.ENTRY_POINT == EntryPoint) {
 	global.ENTRY_POINT = -1;
 }
 depth = 19;
-image_alpha = 0;

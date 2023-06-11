@@ -1,7 +1,6 @@
 if instance_exists(Dialogue) {
 	PostEvent = true;
-}
-else {
+} else {
 	if (_Host == obj_SavePoint.id && PostEvent) {
 		PostEvent = false;
 		instance_create_depth(0, 0, -1000000, obj_SavePointMenu);
